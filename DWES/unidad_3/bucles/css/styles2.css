@@ -1,0 +1,21 @@
+table, td, th {
+    border:1px solid black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+}
+td, th{
+    background-color: rgb(178, 221, 221);
+}
+#header{
+    font-size: 20px;
+    background-color: antiquewhite;
+
+}
+
+#lateral{
+    font-size: 20px;
+    background-color: rgb(60, 64, 70);
+    color: white;
+
+}
+

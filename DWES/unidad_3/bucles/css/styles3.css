@@ -1,0 +1,153 @@
+
+body{
+    display: grid;
+    background-color: #a15252;
+    place-content: center;
+    min-height: 100vh;
+
+}
+
+body,html {
+    margin: 0;
+    padding: 0;
+}
+* {
+    font-family: 'Courier New', Courier, monospace;
+    box-sizing: border-box;
+}
+table {
+    width: 100%;
+    border: 3px solid black;
+    font-size: 250%;
+    text-transform: uppercase;
+}
+
+th{
+    border: 3px solid black;
+    padding: 10px;
+    background-color: black;
+    color: white;
+}
+td {
+    border: 1px solid black;
+    text-align: center;
+    background-color: #a78686;
+    border: 3px solid black;
+    color: white;
+
+}
+
+a{
+    text-decoration: none;
+    color: black;
+    padding: 1%;
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    background-color: transparent;
+    font-size: 30px;
+    justify-self: center;
+    font-family: 'Courier New', Courier, monospace;
+    transition: all 0.5s ease;
+    font-size: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    border: 2px solid transparent;
+
+}
+
+a:hover{
+    background-color: #be6161;
+}
+
+.sunday{
+    background-color: #ad1c1c;
+    color: white;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.today > *, .today {
+    background-color: #449c47;
+    color: white;
+
+}
+
+p {
+    margin-top: 0;
+}
+.festivoN{
+    background-color: rgb(92 30 30);
+}
+.festivoC{
+    background-color: rgb(108 21 21);
+}
+.festivoL {
+    background-color: rgb(156 82 82);
+}
+.calendar{
+    display: grid;
+    text-align: center;
+    justify-content: center;
+    padding-top: 25px;
+    gap: 5px;
+    justify-items: center;
+}
+input[type="month"] {
+    background-color: #a78686;
+    color: black;
+    font-size: larger;
+    width: 100%;
+    border: 2px solid black;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+input[type="month"]:hover{
+    background-color: #a77878;
+}
+
+/* label for calendar */
+label {
+    text-transform: capitalize;
+    font-size: 25px;
+    color: white;
+    padding: 12px 20px;
+}
+
+input[type="submit"] {
+    background-color: #b18888;
+    color: black;
+    font-size: larger;
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 50%;
+    margin-top: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #be6161;
+}
+
+#msgerror{
+    color: red;
+    font-size: 19px;
+    text-align: center;
+    margin-bottom: 10px;
+    background-color: black;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+/* Si no hay contenido se oculta */
+#msgerror:empty{
+    background-color: transparent;
+}

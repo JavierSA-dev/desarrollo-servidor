@@ -1,0 +1,68 @@
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+body{
+    background-color: beige;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+th{
+    text-align: left;
+    font-size: 20px;
+}
+
+td {
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+
+}
+
+td{
+    padding: 5px 20px;
+    text-transform: capitalize;
+}
+
+#add{
+    display: block;
+    border: 1px solid black;
+    line-height: 2rem;
+    text-align: center;
+    color: green;
+    padding: 0 10px;
+}
+
+#add:hover{
+    background-color: green;
+    color: white;
+}
+
+#add:hover > svg{
+    stroke: white;
+}
+
+#edit{
+    color: rgb(124, 124, 0);
+}
+
+#borrar{
+    color: red;
+}
+
+a{
+    text-decoration: underline;
+}
+
+
+
+svg{
+    vertical-align: middle;
+}

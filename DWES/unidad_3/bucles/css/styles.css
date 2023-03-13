@@ -1,0 +1,122 @@
+body{
+    background-color: #f0f0f0;
+    /* Body ocupa todo el viewport */
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+*{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.01em;
+    box-sizing: border-box;
+
+}
+table, td, th {
+    border: 2px solid black;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    border-collapse: collapse;
+}
+table{
+    width: 60%;
+    -webkit-box-shadow: 0px 7px 98px 10px rgba(0,0,0,0.37);
+    -moz-box-shadow: 0px 7px 98px 10px rgba(0,0,0,0.37);
+    box-shadow: 0px 7px 98px 10px rgba(0,0,0,0.37);
+}
+form{
+    /* center content middle of viewport */
+    display: grid;
+    justify-items: center;
+    object-fit: center;
+    padding-top: 50px;
+    gap: 2em;
+}
+td, th{
+    background-color: rgb(178, 221, 221);
+    max-width: 19px;
+}
+#header{
+    font-size: 20px;
+    background-color: antiquewhite;
+
+}
+
+#lateral{
+    font-size: 20px;
+    background-color: rgb(60, 64, 70);
+    color: white;
+
+}
+
+.question > input {
+    width: 81%;
+
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.correct > input[type=number] {
+    pointer-events: none;
+    background-color: #AADBAA;
+}
+
+.correct{
+    background-color: lightgreen;
+}
+.wrong{
+    background-color: lightcoral;
+}
+
+#solutionmesg{
+    text-align: center;
+}
+#meserror{
+    text-align: center;
+    color: rgb(255 200 200);
+}
+
+.finished{
+    min-width: 45%;
+    background-color: rgb(60, 64, 70);
+    color: white;
+    padding: 1%;
+    border-radius: 10px;
+}
+
+.githubLink{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+    padding: 1%;
+}
+
+a:hover{
+    background-color: rgb(180 200 201);
+}
+
+#numberCorrects{
+    color: rgb(0 255 0);
+}
+#numberWrongs{
+    color: rgb(255 0 0);
+}
+
+input[type=submit], #linkRestart{
+    cursor: pointer;
+    background-color: rgb(60, 64, 70);
+    text-decoration: none;
+    color: white;
+    padding: 5px 15px;
+    border: 2px solid black;
+
+}
+input[type=submit]:hover, #restart:hover{
+    background-color: rgb(99, 104, 112);
+}
+
