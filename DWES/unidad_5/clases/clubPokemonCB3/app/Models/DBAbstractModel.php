@@ -17,6 +17,7 @@ abstract class DBAbstractModel
     // Manejo basico de las consultas
     protected $query; // Consulta
     protected $parametros = array(); // Parametros de la consulta
+    protected $rows = array(); // Resultado de la consulta
 
     // Manejo de transacciones
     abstract protected function get();

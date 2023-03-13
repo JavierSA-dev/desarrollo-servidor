@@ -26,7 +26,6 @@ function crearTablero($filas, $columnas, $minas)
             }
         }
     }
-
     return $tablero;
 }
 

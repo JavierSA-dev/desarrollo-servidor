@@ -1,7 +1,7 @@
 <?php
 
 echo "<link rel='stylesheet' type='text/css' href='styles.css'>";
-echo "<br><a href=./DWES2Trim>Actividades de base de datos, Segundo trimestre</a><br>";
+echo "<br><a href=./DWES/DWES2Trim>Actividades de base de datos, Segundo trimestre</a><br>";
 echo "<a href=https://github.com/JavierSA-dev/desarrollo-servidor>Enlace github a todos los ejercicios</a>";
 
 $ejercicios = array(

@@ -22,10 +22,6 @@ if (!isset($_SESSION["perfil"])) {
     $_SESSION["perfil"] = "invitado";
 }
 
-if (!isset($_SESSION["bloqueado"])) {
-    $_SESSION["bloqueado"] = 0;
-}
-
 if (!isset($_SESSION["contador"])) {
     $_SESSION["contador"] = 0;
 }
@@ -41,28 +37,15 @@ if (isset($_POST["inicioSesion"])) {
     }
 
     if ($_SESSION["perfil"] == "invitado") {
-        if ($ObjUsuario->getUserByUsername($_POST)) {
-            echo "hoi";
-            if (isset($_SESSION["temporalUser"]) && $_SESSION["temporalUser"] == $_POST["user"]) {
-                $_SESSION["contador"]++;
-            } else {
-                $_SESSION["temporalUser"] = $_POST["user"];
-                $_SESSION["contador"] = 1;
-            }
-            if ($_SESSION["contador"] >= 3) {
-                $ObjUsuario->bloquearByUser($_POST);
-                $_SESSION["perfil"] == "invitado";
-                
-            }else{
-                echo "Usuario o contraseña incorrectos";
-            }
-        }else{
-            echo "asdsa";
-            echo "Usuario o contraseña incorrectos";
-        }
-
+        echo "Usuario o contraseña incorrectos";
+        $_SESSION["contador"]++;
+        echo $_SESSION["contador"];
     }
 
+    if ($_SESSION["contador"] == 3) {
+        print_r($_POST);
+        // $ObjUsuario->bloquear($_POST);
+    }
 
     foreach ($arrayBloqueado as $key => $value) {
         if ($value["bloqueado"] == 1) {
@@ -75,18 +58,13 @@ if (isset($_POST["inicioSesion"])) {
 
 
 if (isset($_POST["enviarBloq"])) {
-    if(isset($_POST["bloqueado"])){
-        $keys = array_keys($_POST["bloqueado"]);
-        $ids = array();
-        foreach ($keys as $key => $value) {
-            $ids[] = $_POST["id"][$value];
-        }
-        $ObjUsuario->desbloquearByArrayIds($ids);
-    }else
-    {
-        echo "No hay usuarios seleccionados";
+    // method of php to get all the keys of a array
+    $keys = array_keys($_POST["bloqueado"]);
+    $ids = array();
+    foreach ($keys as $key => $value) {
+        $ids[] = $_POST["id"][$value];
     }
-
+    $ObjUsuario->desbloquearByArrayIds($ids);
 }    
 
 
@@ -104,28 +82,23 @@ if (isset($_POST["enviarBloq"])) {
 <body>
     <h1>Bookmarks</h1>
     <?php
-    if ($_SESSION["perfil"] == "invitado" || $_SESSION["bloqueado"] == 1) {
+    if ($_SESSION["perfil"] == "invitado") {
     ?>
         <form action="" method="POST">
             Usuario <input type="text" name="user">
             Contraseña <input type="password" name="psw">
             <input type="submit" name="inicioSesion" value="Iniciar Sesion"><br />
         </form>
-        <?php
-        if ($_SESSION["bloqueado"] == 1 || $_SESSION["contador"] >= 3) {
-            ?>
-            <div>Usuario bloqueado</div>
-        <?php
-        }
-        ?>
     <?php
-
+        // if ($_SESSION["bloqueado"] == 1) {
+        //     echo "El usuario esta bloqueado";
+        // }
     }
     ?>
 
 
     <?php
-    if ($_SESSION["perfil"] == "admin" and $_SESSION["bloqueado"] == 0) {
+    if ($_SESSION["perfil"] == "admin") {
         $data = $ObjUsuario->getAll();
     ?>
         <form action="" method="post">
@@ -138,7 +111,6 @@ if (isset($_POST["enviarBloq"])) {
                     <input type="text" name="nombre[<?php echo $key; ?>]" readonly value="<?php echo $value['nombre'] ?>">
                     <input type="checkbox" name="bloqueado[<?php echo $key; ?>]" >
                     <input type="hidden" name="id[<?php echo $key; ?>]" value="<?php echo $value['id'] ?>">
-                    </br></br>
             <?php
                 }
             }
@@ -154,7 +126,7 @@ if (isset($_POST["enviarBloq"])) {
 
 
         <?php
-    } else if ($_SESSION["perfil"] == "user" and $_SESSION["bloqueado"] == 0) {
+    } else if ($_SESSION["perfil"] == "user") {
         $data = $ObjBookmark->getByUserId($_SESSION['user'][0]['id']);
         foreach ($data as $key => $value) {
         ?>
@@ -173,10 +145,10 @@ if (isset($_POST["enviarBloq"])) {
         echo "<a href=\"add.php?idUsuario=$idUsuario\">Añadir</a>";
     }
 
-    if ($_SESSION["perfil"] == "admin" || $_SESSION["perfil"] == "user" and $_SESSION["bloqueado"] == 0) {
+    if ($_SESSION["perfil"] == "admin" || $_SESSION["perfil"] == "user") {
         echo "<br/><a href=\"../cierresesion.php\">Cerrar Sesion</a><br/>";
     }
-    
+
     ?>
 </body>
 

@@ -71,7 +71,7 @@ class Bookmark extends DBAbstractModel{
         foreach ($data as $campo=>$valor) {
             $$campo = $valor;
         }
-        $this->query = "UPDATE bookmarks SET bm_url = :bm_url, descripcion = :descripcion WHERE id = :id ";
+        $this->query = "UPDATE bookmarks SET bm_url = :bm_url, descripcion = :descripcion WHERE id = :id";
         $this->parametros["bm_url"] = $bm_url;
         $this->parametros["descripcion"] = $descripcion;
         $this->parametros["id"] = $id;
@@ -80,7 +80,7 @@ class Bookmark extends DBAbstractModel{
 
     }
      function delete($id = ""){
-        $this->query = "DELETE FROM bookmarks WHERE id = :id ";
+        $this->query = "DELETE FROM bookmarks WHERE id = :id";
         $this->parametros["id"] = $id;
         $this->get_results_from_query();
         $this->mensaje = "Bookmark borrado";

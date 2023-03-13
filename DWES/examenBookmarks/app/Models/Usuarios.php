@@ -50,13 +50,6 @@ class Usuarios extends DBAbstractModel{
         $this->mensaje = "Usuario modificado";
     }
 
-    function bloquearByUser($data){
-        $this->query = "UPDATE usuarios SET bloqueado = 1 WHERE user = :user";
-        $this->parametros["user"] = $data["user"];
-        $this->get_results_from_query();
-        $this->mensaje = "Usuario bloqueado";
-    }
-
     function getByUserPassword($data)
     {
         $this->query = "SELECT * FROM usuarios where user = :user and psw = :psw";
@@ -113,22 +106,5 @@ class Usuarios extends DBAbstractModel{
     function edit(){
     }
      function delete(){
-    }
-
-    function getUserByUsername($data){
-        $this->query = "SELECT * FROM usuarios where user = :user";
-        $this->parametros["user"] = $data["user"];
-        $this->get_results_from_query();
-        if(count($this->rows) == 1) {
-            foreach ($this->rows[0] as $propiedad=>$valor) {
-                $this->$propiedad = $valor;
-            }
-            $this->mensaje = 'Usuario encontrado';
-        }
-        else {
-            $this->mensaje = 'Usuario no encontrado';
-        }
-        return $this->rows;   
-
     }
 }

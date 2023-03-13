@@ -22,12 +22,9 @@ if ($_SESSION["perfil"] != "user") {
 
     if (isset($_POST["enviar"])) {
         $objBookmark = Bookmark::getInstancia();
-        if (empty($_POST["bm_url"]) || empty($_POST["descripcion"])){
-            $mensaje = "Faltan datos";
-        }else{
-            $objBookmark->add($_POST);
-            $mensaje = $objBookmark->getMensaje();
-        }
+        $objBookmark->add($_POST);
+
+       $mensaje = $objBookmark->getMensaje();
     }
     if (isset($_POST["inicio"])) {
         header("Location: index.php");
@@ -49,6 +46,7 @@ if ($_SESSION["perfil"] != "user") {
         if ($procesaFormulario) {
         ?>
             <form action="" method="POST">
+                <!-- hidden -->
                 <input type="hidden" name="idUsuario" value="<?php echo $_GET['idUsuario'] ?>">
                 <input type="text" name="bm_url" placeholder="Url"><br><br>
                 <textarea type="text" name="descripcion" placeholder="Descripcion"></textarea><br>

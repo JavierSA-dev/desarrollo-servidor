@@ -18,13 +18,8 @@ else {
     define("DBPORT", $_ENV["DB_PORT"]);
     $id = $_GET["id"];
     $ObjBookmark = Bookmark::getInstancia();
-    $ObjBookmark->getBookmarkByid($id);
-    if ($ObjBookmark->getBookmarkByid($id)[0]["idUsuario"] != $_SESSION["user"][0]["id"]) {
-        header("Location: index.php");
-    }else{
-        $ObjBookmark->delete($id);
-        header("Location: index.php");
-    }
+    $ObjBookmark->delete($id);
+    header("Location: index.php");
 }
 
 ?>

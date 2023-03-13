@@ -5,7 +5,7 @@ use App\Models\Bookmark;
 use Dotenv\Dotenv;
 
 session_start();
-if ($_SESSION["perfil"] != "user" ) {
+if ($_SESSION["perfil"] != "user") {
     header("Location: index.php");
 } else {
     $dotenv = Dotenv::createImmutable(__DIR__ . "/../");
@@ -18,11 +18,9 @@ if ($_SESSION["perfil"] != "user" ) {
     define("DBPORT", $_ENV["DB_PORT"]);
     $id = $_GET["id"];
     $ObjBookmark = Bookmark::getInstancia();
+    // $equipo = $ObjEquipo->getEquipoById($id);
     $bookmark = $ObjBookmark->getBookmarkByid($id);
 
-    if ($_SESSION["user"][0]["id"]!= $bookmark[0]["idUsuario"]) {
-        header("Location: index.php");
-    }
     if (isset($_POST["enviar"])) {
         $ObjBookmark->edit($_POST);
         header("Location: index.php");
@@ -53,7 +51,6 @@ if ($_SESSION["perfil"] != "user" ) {
             }
 
             echo "<input type=\"hidden\" name=\"id\" value=\"$id\">";
-            echo "<input type=\"hidden\" name=\"idUsuario\" value=\"$value[idUsuario]\">";
             ?>
 
             <input type="submit" name="enviar" value="Confirmar cambios">
